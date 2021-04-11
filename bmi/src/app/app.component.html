@@ -1,0 +1,58 @@
+<h1>BMI Calculator</h1>
+<div>
+  <h4>US Metrics</h4>
+</div>
+<form [formGroup]="myForm" (ngSubmit)="calculateBMI(myForm)">
+  <div>
+    <div style="display: flex;margin: 10px;">
+      <div style="margin-right: 10px;">Age:</div>
+      <div>
+        <input type="number" placeholder="Age" formControlName="age">
+      </div>
+    </div>
+
+    <div style="display: flex;margin: 10px;">
+      <div style="margin-right: 10px;">Gender:</div>
+      <div style="margin-right: 10px;display: flex;">
+        <div style="margin-right: 10px;">
+          <input type="radio" name="gender" value="male" formControlName="gender">
+        </div>
+        <div>
+          <label for="male">Male</label>
+        </div>
+      </div>
+      <div style="display: flex;">
+        <div style="margin-right: 10px;">
+          <input type="radio" name="gender" value="female" formControlName="gender">
+        </div>
+        <div>
+          <label for="female">Female</label>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex;margin: 10px;">
+      <div style="margin-right: 10px;">Height:</div>
+      <div style="margin-right: 10px;">
+        <input type="number" placeholder="Feet" formControlName="feet">
+      </div>
+      <div>
+        <input type="number" placeholder="Inches" formControlName="inches">
+      </div>
+    </div>
+
+    <div style="display: flex;margin: 10px;"> 
+      <div style="margin-right: 10px;">Weight:</div>
+      <div>
+        <input type="number" placeholder="pounds" formControlName="weight">
+      </div>
+    </div>
+  
+    <div>
+      <button class="btn btn-primary" [disabled]="myForm.invalid">Calculate</button>
+    </div>
+  </div>
+</form>
+<div *ngIf="finalBMI">
+  <h2>BMI: {{ finalBMI | number: '1.1-1' }}</h2>
+</div>
